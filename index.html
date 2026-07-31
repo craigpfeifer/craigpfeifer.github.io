@@ -1,245 +1,582 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Craig Pfeifer - Applied AI Engineer</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-            line-height: 1.6;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-        }
-        header {
-            background: #35424a;
-            color: white;
-            padding-top: 30px;
-            min-height: 70px;
-            border-bottom: #e8491d 3px solid;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-        }
-        header p {
-            font-size: 1.2em;
-        }
-        section {
-            padding: 20px;
-            background-color: white;
-            margin-bottom: 20px;
-        }
-        section h2 {
-            color: #e8491d;
-        }
-        .expertise-areas {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-        .expertise-area {
-            text-align: center;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-bottom: 15px;
-            flex-basis: 30%; /* Adjust as needed for layout */
-        }
-        .expertise-area h3 {
-            color: #35424a;
-        }
-        .project {
-            margin-bottom: 20px;
-            padding: 15px;
-            border: 1px solid #eee;
-            border-radius: 5px;
-        }
-        .project h3 {
-            color: #35424a;
-        }
-        .tech-skills ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start; /* or space-around, space-between */
-        }
-        .tech-skills ul li {
-            margin: 5px 10px;
-            padding: 8px 15px;
-            background-color: #f0f0f0;
-            border-radius: 20px;
-            font-size: 0.9em;
-        }
-        footer {
-            background: #35424a;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 20px;
-        }
-        footer a {
-            color: white;
-            text-decoration: none;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #e8491d;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        .button:hover {
-            background-color: #c73816;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Craig Pfeifer — Applied Research Engineer</title>
+<meta name="description" content="Applied research engineer. I find the gap in a shipped product, build the fix, and send it back upstream. Agents, sandboxes, filesystems, embedded hardware.">
+
+<meta property="og:title" content="Craig Pfeifer — Applied Research Engineer">
+<meta property="og:description" content="I read the paper, then I ship the thing. Upstream contributions across Python, Rust, and embedded web-serial.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://craigpfeifer.github.io/here_i_am/">
+
+<style>
+  :root {
+    --bg: #0b0d10;
+    --surface: #111418;
+    --surface-hi: #161a1f;
+    --border: #232a32;
+    --text: #e6e9ed;
+    --muted: #9aa4b0;
+    --dim: #6b7684;
+    --accent: #7dd3a0;
+    --accent-dim: #2f6b4d;
+    --link: #8ab4f8;
+    --merged: #a78bfa;
+    --open: #7dd3a0;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- hero ---------- */
+
+  header {
+    padding: 96px 0 72px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  h1 {
+    font-family: var(--mono);
+    font-size: 2.6rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0 0 20px;
+  }
+
+  .tagline {
+    font-size: 1.35rem;
+    color: var(--text);
+    margin: 0 0 16px;
+    max-width: 34ch;
+    line-height: 1.4;
+  }
+
+  .tagline em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .sub {
+    color: var(--muted);
+    font-size: 1.02rem;
+    max-width: 62ch;
+    margin: 0 0 36px;
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .links a {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--text);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    padding: 9px 15px;
+    border-radius: 6px;
+    transition: border-color .15s, background .15s;
+  }
+
+  .links a:hover {
+    border-color: var(--accent-dim);
+    background: var(--surface-hi);
+    text-decoration: none;
+  }
+
+  /* ---------- sections ---------- */
+
+  section {
+    padding: 64px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  h2 {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin: 0 0 10px;
+  }
+
+  .section-lead {
+    color: var(--muted);
+    margin: 0 0 36px;
+    max-width: 64ch;
+  }
+
+  /* ---------- cards ---------- */
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 26px;
+    margin-bottom: 18px;
+    transition: border-color .15s;
+  }
+
+  .card:hover { border-color: #2e3844; }
+
+  .card-head {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+
+  .card h3 {
+    font-family: var(--mono);
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .card h3 a { color: var(--text); }
+  .card h3 a:hover { color: var(--link); }
+
+  .badge {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid;
+    white-space: nowrap;
+  }
+
+  .badge.merged { color: var(--merged); border-color: #453a6b; background: #1c1830; }
+  .badge.open   { color: var(--open);   border-color: var(--accent-dim); background: #12211a; }
+  .badge.live   { color: var(--link);   border-color: #2f4a72; background: #131b28; }
+  .badge.private{ color: var(--dim);    border-color: var(--border); background: var(--surface-hi); }
+
+  .repo {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--dim);
+    margin-bottom: 12px;
+  }
+
+  .card p { margin: 0 0 12px; color: var(--muted); font-size: 0.96rem; }
+  .card p strong { color: var(--text); font-weight: 600; }
+  .card p:last-of-type { margin-bottom: 0; }
+
+  .gap {
+    border-left: 2px solid var(--accent-dim);
+    padding-left: 14px;
+    margin-bottom: 14px !important;
+  }
+
+  code {
+    font-family: var(--mono);
+    font-size: 0.87em;
+    background: var(--surface-hi);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 5px;
+    color: var(--text);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+  }
+
+  .tags span {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--dim);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 3px 8px;
+  }
+
+  /* ---------- writing ---------- */
+
+  blockquote {
+    margin: 0 0 16px;
+    padding-left: 18px;
+    border-left: 2px solid var(--accent-dim);
+    font-size: 1.12rem;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  /* ---------- research ---------- */
+
+  .metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-bottom: 22px;
+    padding: 20px 26px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+
+  .metric-val {
+    font-family: var(--mono);
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1.1;
+  }
+
+  .metric-lbl {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--dim);
+  }
+
+  .paper {
+    padding: 13px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.94rem;
+  }
+  .paper:last-child { border-bottom: none; }
+  .paper .venue {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--dim);
+  }
+
+  .prior { margin-top: 30px; }
+  .prior h3 {
+    font-family: var(--mono);
+    font-size: 0.95rem;
+    margin: 0 0 4px;
+  }
+  .prior p { color: var(--muted); font-size: 0.94rem; margin: 0 0 18px; }
+
+  /* ---------- footer ---------- */
+
+  footer {
+    padding: 56px 0 72px;
+    color: var(--dim);
+    font-size: 0.9rem;
+  }
+
+  footer .contact-line {
+    font-size: 1.05rem;
+    color: var(--text);
+    margin-bottom: 18px;
+  }
+
+  footer .meta {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    margin-top: 26px;
+  }
+
+  @media (max-width: 620px) {
+    header { padding: 64px 0 48px; }
+    h1 { font-size: 2rem; }
+    .tagline { font-size: 1.15rem; }
+    section { padding: 48px 0; }
+    .card { padding: 20px; }
+    .metrics { gap: 20px; padding: 18px 20px; }
+  }
+</style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Craig Pfeifer</h1>
-            <p>Applied AI Engineer | Full-Lifecycle ML & NLP Development | Solving Complex Challenges</p>
-        </div>
-    </header>
 
-    <section id="about" class="container">
-        <h2>About Me</h2>
-        <p>Highly skilled and accomplished professional with extensive experience in machine learning and natural language processing, proficient in full-lifecycle ML and NLP development. Expertise in breaking down complex business challenges into manageable, achievable machine learning objectives. Demonstrated advanced knowledge of application of machine learning for diverse use cases: decision support, fraud detection, customer support solutions. Developed and deployed machine learning systems across multiple domains including legal, regulatory/compliance, intelligence.</p>
-    </section>
+<header>
+  <div class="wrap">
+    <h1>Craig Pfeifer</h1>
+    <p class="tagline">I read the paper, then I <em>ship the thing</em>.</p>
+    <p class="sub">
+      Applied research engineer. I find the gap in a product I'm actually using,
+      build the fix, and send it back upstream. Agents, sandboxes, filesystems,
+      embedded hardware — whatever the problem needs.
+    </p>
+    <nav class="links">
+      <a href="https://github.com/craigpfeifer">GitHub</a>
+      <a href="https://www.linkedin.com/in/craigpfeifer/">LinkedIn</a>
+      <a href="https://scholar.google.com/citations?user=XhsROMMAAAAJ&hl=en">Scholar</a>
+      <a href="https://celesto.ai/blog/posts/community/orchestrating-dinner/orchestrating-dinner/">Writing</a>
+      <a href="https://lightning.ai/craig-qyive">Lightning Studios</a>
+      <a href="mailto:craig.pfeifer@gmail.com">Email</a>
+    </nav>
+  </div>
+</header>
 
-    <section id="expertise" class="container">
-        <h2>Areas of Expertise</h2>
-        <div class="expertise-areas">
-            <div class="expertise-area">
-                <h3>AI & Machine Learning</h3>
-                <ul>
-                    <li>ML Model Development</li>
-                    <li>Full-Lifecycle ML</li>
-                    <li>Diverse ML Applications</li>
-                </ul>
-            </div>
-            <div class="expertise-area">
-                <h3>Natural Language Processing</h3>
-                <ul>
-                    <li>NLP System Development</li>
-                    <li>Text Analysis</li>
-                    <li>Semantic Understanding</li>
-                </ul>
-            </div>
-            <div class="expertise-area">
-                <h3>Data & Analysis</h3>
-                <ul>
-                    <li>Data Analysis & Forecasting</li>
-                    <li>Data-Driven Solutions</li>
-                    <li>Predictive Modeling</li>
-                </ul>
-            </div>
-            <div class="expertise-area">
-                <h3>Problem Solving & Leadership</h3>
-                <ul>
-                    <li>Project Management</li>
-                    <li>Cross-functional Collaboration</li>
-                    <li>Team Leadership</li>
-                    <li>Product Management</li>
-                </ul>
-            </div>
-            <div class="expertise-area">
-                <h3>Fraud Detection</h3>
-                <ul>
-                    <li>ML for Fraud</li>
-                    <li>Anomaly Detection</li>
-                    <li>Risk Assessment</li>
-                </ul>
-            </div>
-            <div class="expertise-area">
-                <h3>Forecasting</h3>
-                <ul>
-                    <li>Demand Forecasting</li>
-                    <li>Time Series Analysis</li>
-                    <li>Predictive Analytics</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+<section id="upstream">
+  <div class="wrap">
+    <h2>Upstream Contributions</h2>
+    <p class="section-lead">
+      Three projects, three languages, three problems the maintainers hadn't gotten to yet.
+      Each one started the same way — I hit the limitation while using the tool, then fixed it.
+    </p>
 
-    <section id="projects" class="container">
-        <h2>Spotlight Projects</h2>
+    <article class="card">
+      <div class="card-head">
+        <h3><a href="https://github.com/StuckAtPrototype/AirCube/pull/58">Browser-based AirCube monitor</a></h3>
+        <span class="badge open">Open PR</span>
+      </div>
+      <div class="repo">StuckAtPrototype/AirCube · +1,176 lines · 6 files</div>
+      <p class="gap">
+        <strong>The gap:</strong> the PyQt6 desktop app couldn't run on a Chromebook at all.
+      </p>
+      <p>
+        Root-caused it down to the hardware: <code>pyserial</code> saw no device because Crostini's
+        kernel ships no <code>cdc-acm</code> module, and <code>pyusb</code> could open the device but
+        never read from it — the ESP32-H2's USB Serial/JTAG gates TX until the host sends
+        <code>SET_CONTROL_LINE_STATE</code>, which times out through ChromeOS USB passthrough.
+      </p>
+      <p>
+        Rebuilt the client on the Web Serial API with the <code>DTR=0 RTS=1</code> handshake the
+        chip requires — <code>DTR=1</code> silently resets it, which was the real cause of a dead
+        stream. Shipped with live AQI cards, three scrolling charts written directly to canvas
+        with no charting library, CSV streaming, and device config round-trips.
+      </p>
+      <div class="tags">
+        <span>Web Serial API</span><span>ESP32-H2</span><span>USB/CDC</span>
+        <span>Canvas</span><span>ChromeOS/Crostini</span>
+      </div>
+    </article>
 
-        <div class="project">
-            <h3>Automated Directive Extraction from Policy Texts (ADEPT)</h3>
-            <p><strong>Lead Engineer/Product Owner</strong> - Developed a machine learning approach to identify and extract regulatory obligations from policy documents. Led a cross-functional team, developed data annotation guidelines, and refactored the system for scalability using Docker. Pivoted based on user feedback to create a document survey system.</p>
-            </div>
+    <article class="card">
+      <div class="card-head">
+        <h3><a href="https://github.com/CelestoAI/SmolVM/pull/293"><code>smolvm resume</code> for stopped sandboxes</a></h3>
+        <span class="badge merged">Merged</span>
+      </div>
+      <div class="repo">CelestoAI/SmolVM · +103 lines · closes #292</div>
+      <p class="gap">
+        <strong>The gap:</strong> <code>resume</code> worked on paused sandboxes but not stopped ones.
+      </p>
+      <p>
+        Routed both states through the existing <code>vm.start()</code> facade rather than adding a
+        parallel path, and restored <code>--boot-timeout</code> so stopped sandboxes keep the boot-wait
+        control the old <code>start</code> command had. Full CLI suite green at 147 passing.
+      </p>
+      <div class="tags"><span>Python</span><span>CLI design</span><span>pytest</span><span>microVMs</span></div>
+    </article>
 
-        <div class="project">
-            <h3>Policy Consistency Checker</h3>
-            <p><strong>Lead Engineer</strong> - Developed a semantic indexing scheme using custom trained word embeddings and unsupervised clustering to find inconsistent policies across a large agency. Revealed inconsistencies in e-signature governance, information security, and approval policies.</p>
-            </div>
-    </section>
+    <article class="card">
+      <div class="card-head">
+        <h3><a href="https://github.com/CelestoAI/smolfs/pull/15">Read-only mounts for smolfs</a></h3>
+        <span class="badge open">Open PR</span>
+      </div>
+      <div class="repo">CelestoAI/smolfs · +366 / −12 · 12 files · closes #14</div>
+      <p class="gap">
+        <strong>The gap:</strong> nothing stopped an agent from writing to volumes holding model
+        weights or evaluation data.
+      </p>
+      <p>
+        Added <code>smolfs mount --readonly</code>, enforced by the kernel through FUSE rather than
+        by application-level checks. Read-only is modeled as a property of the <em>mount</em>, not the
+        volume — set at mount, cleared at unmount — so it composes with the existing lifecycle.
+        Threaded through the Rust core, the CLI status table, and both the Python and Node SDKs.
+      </p>
+      <p>
+        Backward compatible via <code>#[serde(default)]</code> so existing volume records still
+        deserialize, with a regression test pinning it. Verified under <code>cargo test</code>,
+        <code>clippy -D warnings</code>, <code>fmt --check</code>, and a <code>maturin</code> wheel build.
+      </p>
+      <div class="tags">
+        <span>Rust</span><span>FUSE/JuiceFS</span><span>PyO3</span><span>Node bindings</span><span>systems</span>
+      </div>
+    </article>
+  </div>
+</section>
 
-    <section id="tech-skills" class="container">
-        <h2>Technical Proficiencies</h2>
-        <div class="tech-skills">
-            <h3>Programming Languages</h3>
-            <ul>
-                <li>Python</li>
-            </ul>
-            <h3>Data Analysis & Manipulation</h3>
-            <ul>
-                <li>NumPy</li>
-                <li>Pandas</li>
-                <li>SciPy</li>
-                <li>SQL</li>
-                <li>Jupyter Notebooks</li>
-            </ul>
-            <h3>Machine Learning</h3>
-            <ul>
-                <li>SciKit-Learn</li>
-                <li>XGBoost</li>
-                <li>Pytorch Lightning</li>
-            </ul>
-            <h3>Natural Language Processing</h3>
-            <ul>
-                <li>Hugging Face Transformers</li>
-                <li>SpaCy</li>
-                <li>Sentence Transformers (SBERT)</li>
-            </ul>
-            <h3>Forecasting</h3>
-            <ul>
-                <li>Prophet (Meta)</li>
-            </ul>
-            <h3>Cloud Services</h3>
-            <ul>
-                <li>Google Cloud Platform (Big Query, Vertex AI)</li>
-                <li>Amazon Web Services (AWS)</li>
-            </ul>
-            <h3>Containerization</h3>
-            <ul>
-                <li>Docker</li>
-                <li>Podman</li>
-            </ul>
-        </div>
-    </section>
+<section id="systems">
+  <div class="wrap">
+    <h2>Systems I Built</h2>
+    <p class="section-lead">
+      An agent, the harness I had to build to test it, and the deployment around both.
+    </p>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Craig Pfeifer | <a href="https://www.linkedin.com/in/craig-pfeifer-21ba486/" target="_blank">LinkedIn</a> | <a href="mailto:craig.pfeifer@gmail.com">Email</a></p>
-            <p><a href="YOUR_GITHUB_REPO_URL_HERE" class="button">Visit My GitHub Repo for Code & Projects</a></p>
-        </div>
-    </footer>
+    <article class="card">
+      <div class="card-head">
+        <h3><a href="https://github.com/craigpfeifer/chefagent">ChefAgent</a></h3>
+        <span class="badge live">Deployed</span>
+      </div>
+      <div class="repo">craigpfeifer/chefagent · Python · Docker · GCP</div>
+      <p>
+        A meal-planning agent that started as a single prompt on Celesto's managed agents and grew
+        into a real system: web search grounding through Brave and Exa so recipes track actual
+        seasonal ingredients, an MCP server exposing Brave Search to external clients, and
+        guardrails keeping it in scope.
+      </p>
+      <p>
+        Containerized for one-command deploy to GCP, with behavior driven by versioned prompt files
+        rather than hardcoded strings — so the persona is editable without touching code.
+      </p>
+      <div class="tags">
+        <span>Agentor</span><span>MCP</span><span>Exa</span><span>Brave Search</span>
+        <span>LiteLLM</span><span>Docker</span><span>GCP</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <h3>Chat UI</h3>
+        <span class="badge private">Private repo</span>
+      </div>
+      <div class="repo">Python · Chainlit · Docker</div>
+      <p class="gap">
+        <strong>The gap:</strong> no open-source chat UI supported the new OpenAI API spec that
+        Celesto implements — so I couldn't properly test my own agent.
+      </p>
+      <p>
+        Built one. Multiple agent profiles with independent settings, cloud-backed session history
+        via Acontext, model-aware token-limit monitoring across GPT, Claude, and Gemini, and
+        automatic context pruning when conversations outgrow the window. Dockerized with a
+        <code>/health</code> endpoint that checks its own dependencies.
+      </p>
+      <div class="tags">
+        <span>Chainlit</span><span>OpenAI API spec</span><span>Acontext</span>
+        <span>context management</span><span>Docker</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <h3><a href="https://lightning.ai/craig-qyive">Lightning Studios &amp; APIs</a></h3>
+        <span class="badge live">Live</span>
+      </div>
+      <div class="repo">lightning.ai/craig-qyive</div>
+      <p>
+        Runnable studios and deployed APIs — not screenshots or demo videos. Open one and it runs.
+      </p>
+      <div class="tags"><span>Lightning AI</span><span>PyTorch</span><span>model serving</span></div>
+    </article>
+  </div>
+</section>
+
+<section id="writing">
+  <div class="wrap">
+    <h2>Writing</h2>
+    <p class="section-lead">Thinking out loud about how these systems should be put together.</p>
+
+    <article class="card">
+      <div class="card-head">
+        <h3><a href="https://celesto.ai/blog/posts/community/orchestrating-dinner/orchestrating-dinner/">Orchestrating Dinner</a></h3>
+      </div>
+      <div class="repo">celesto.ai · community blog</div>
+      <blockquote>“The Chef Agent to have agency. It's time to add a layer.”</blockquote>
+      <p>
+        How a chef chatbot turned into a multi-agent system. Adding tools made it capable but opaque —
+        <em>“adding a tool to the mix increases complexity. How did I know what it was doing?”</em> —
+        so execution traces came first, then an orchestration layer to hold the memory the agent
+        couldn't. The argument: keep the specialist focused on its own domain and let the
+        orchestrator own persistence.
+      </p>
+      <div class="tags"><span>multi-agent</span><span>MCP</span><span>observability</span><span>OpenClaw</span></div>
+    </article>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <h2>Research Track Record</h2>
+    <p class="section-lead">
+      Applied AI in legal and regulatory domains, back when that meant custom embeddings and
+      semi-supervised methods. Same instinct as the work above — research aimed at something
+      that has to actually run.
+    </p>
+
+    <div class="metrics">
+      <div>
+        <div class="metric-val">417</div>
+        <div class="metric-lbl">Citations</div>
+      </div>
+      <div>
+        <div class="metric-val">8</div>
+        <div class="metric-lbl">h-index</div>
+      </div>
+      <div>
+        <div class="metric-val">AI &amp; Law</div>
+        <div class="metric-lbl">JURIX · Texas Law Review</div>
+      </div>
+    </div>
+
+    <div class="paper">
+      <a href="https://scholar.google.com/citations?user=XhsROMMAAAAJ&hl=en">Scalable and explainable legal prediction</a>
+      <div class="venue">Artificial Intelligence and Law · 2021 · 144 citations</div>
+    </div>
+    <div class="paper">
+      Automatic semantic edge labeling over legal citation graphs
+      <div class="venue">Artificial Intelligence and Law · 2018 · 74 citations</div>
+    </div>
+    <div class="paper">
+      Semi-supervised methods for explainable legal prediction
+      <div class="venue">ICAIL · 2019 · 61 citations</div>
+    </div>
+    <div class="paper">
+      Does lawyering matter? Predicting judicial decisions from legal briefs
+      <div class="venue">Texas Law Review · 2021 · 38 citations</div>
+    </div>
+
+    <div class="prior">
+      <h3>ADEPT — Automated Directive Extraction from Policy Texts</h3>
+      <p>
+        Lead engineer and product owner. Built ML extraction of regulatory obligations from policy
+        documents, led the cross-functional team, wrote the annotation guidelines, and containerized
+        the system for scale. Pivoted to a document survey system when user feedback said the
+        original framing wasn't what people needed.
+      </p>
+
+      <h3>Policy Consistency Checker</h3>
+      <p>
+        Semantic indexing with custom-trained word embeddings and unsupervised clustering to surface
+        contradictory policies across a large agency — turning up real inconsistencies in
+        e-signature governance, information security, and approval chains.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="contact-line">
+      Building something that needs applied AI to actually ship?
+      <a href="mailto:craig.pfeifer@gmail.com">Get in touch</a>.
+    </p>
+    <nav class="links">
+      <a href="https://github.com/craigpfeifer">GitHub</a>
+      <a href="https://www.linkedin.com/in/craigpfeifer/">LinkedIn</a>
+      <a href="https://scholar.google.com/citations?user=XhsROMMAAAAJ&hl=en">Scholar</a>
+      <a href="mailto:craig.pfeifer@gmail.com">Email</a>
+    </nav>
+    <p class="meta">Craig Pfeifer · 2026</p>
+  </div>
+</footer>
 
 </body>
 </html>
