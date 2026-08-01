@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Craig Pfeifer — Applied Research Engineer</title>
-<meta name="description" content="Applied research engineer. I find the gap in a shipped product, build the fix, and send it back upstream. Agents, sandboxes, filesystems, embedded hardware.">
+<title>Craig Pfeifer — Applied AI & R&D Productization</title>
+<meta name="description" content="Applied AI Engineer & R&D Productization Advisor. Translating complex research, sandboxed agent runtimes, and MLOps into production systems.">
 
-<meta property="og:title" content="Craig Pfeifer — Applied Research Engineer">
-<meta property="og:description" content="I read the paper, then I ship the thing. Upstream contributions across Python, Rust, and embedded web-serial.">
+<meta property="og:title" content="Craig Pfeifer — Applied AI & R&D Productization">
+<meta property="og:description" content="Translating complex AI research and sandbox architectures into production-grade systems.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://craigpfeifer.github.io/here_i_am/">
 
@@ -63,6 +63,15 @@
     font-size: 2.6rem;
     font-weight: 600;
     letter-spacing: -0.02em;
+    margin: 0 0 10px;
+  }
+
+  .role {
+    font-family: var(--mono);
+    font-size: 0.95rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
     margin: 0 0 20px;
   }
 
@@ -70,7 +79,7 @@
     font-size: 1.35rem;
     color: var(--text);
     margin: 0 0 16px;
-    max-width: 34ch;
+    max-width: 38ch;
     line-height: 1.4;
   }
 
@@ -82,7 +91,7 @@
   .sub {
     color: var(--muted);
     font-size: 1.02rem;
-    max-width: 62ch;
+    max-width: 64ch;
     margin: 0 0 36px;
   }
 
@@ -190,12 +199,6 @@
   .card p strong { color: var(--text); font-weight: 600; }
   .card p:last-of-type { margin-bottom: 0; }
 
-  .gap {
-    border-left: 2px solid var(--accent-dim);
-    padding-left: 14px;
-    margin-bottom: 14px !important;
-  }
-
   code {
     font-family: var(--mono);
     font-size: 0.87em;
@@ -222,18 +225,7 @@
     padding: 3px 8px;
   }
 
-  /* ---------- writing ---------- */
-
-  blockquote {
-    margin: 0 0 16px;
-    padding-left: 18px;
-    border-left: 2px solid var(--accent-dim);
-    font-size: 1.12rem;
-    color: var(--text);
-    line-height: 1.5;
-  }
-
-  /* ---------- research ---------- */
+  /* ---------- research & metrics ---------- */
 
   .metrics {
     display: flex;
@@ -274,13 +266,27 @@
     color: var(--dim);
   }
 
-  .prior { margin-top: 30px; }
-  .prior h3 {
-    font-family: var(--mono);
-    font-size: 0.95rem;
-    margin: 0 0 4px;
+  /* ---------- consulting card ---------- */
+
+  .cta-card {
+    background: var(--surface);
+    border: 1px solid var(--accent-dim);
+    border-radius: 10px;
+    padding: 28px;
   }
-  .prior p { color: var(--muted); font-size: 0.94rem; margin: 0 0 18px; }
+
+  .cta-card h3 {
+    font-family: var(--mono);
+    font-size: 1.15rem;
+    color: var(--text);
+    margin: 0 0 10px;
+  }
+
+  .cta-card p {
+    color: var(--muted);
+    font-size: 0.98rem;
+    margin: 0 0 16px;
+  }
 
   /* ---------- footer ---------- */
 
@@ -317,11 +323,11 @@
 <header>
   <div class="wrap">
     <h1>Craig Pfeifer</h1>
-    <p class="tagline">I read the paper, then I <em>ship the thing</em>.</p>
+    <div class="role">Applied AI & Systems Engineering · R&D Productization</div>
+    <p class="tagline">Translating complex AI research into <em>production-grade systems</em>.</p>
     <p class="sub">
-      Applied research engineer. I find the gap in a product I'm actually using,
-      build the fix, and send it back upstream. Agents, sandboxes, filesystems,
-      embedded hardware — whatever the problem needs.
+      Former Principal/Senior Applied Engineer at Lightning.ai, MITRE, TCG, and Blue Apron. CS PhD candidate.
+      Specializing in sandboxed agent runtimes, legal NLP, enterprise MLOps, and technical customer discovery for deep-tech startups.
     </p>
     <nav class="links">
       <a href="https://github.com/craigpfeifer">GitHub</a>
@@ -334,170 +340,116 @@
   </div>
 </header>
 
-<section id="upstream">
+<section id="enterprise-rd">
   <div class="wrap">
-    <h2>Upstream Contributions</h2>
+    <h2>R&D Productization & Enterprise AI Systems</h2>
     <p class="section-lead">
-      Three projects, three languages, three problems the maintainers hadn't gotten to yet.
-      Each one started the same way — I hit the limitation while using the tool, then fixed it.
+      Taking ambiguous research, regulatory NLP, and high-throughput model platforms from paper math to enterprise deployment.
     </p>
 
     <article class="card">
       <div class="card-head">
-        <h3><a href="https://github.com/StuckAtPrototype/AirCube/pull/58">Browser-based AirCube monitor</a></h3>
-        <span class="badge open">Open PR</span>
+        <h3>ADEPT — Automated Directive Extraction from Policy Texts</h3>
+        <span class="badge live">Production System</span>
       </div>
-      <div class="repo">StuckAtPrototype/AirCube · +1,176 lines · 6 files</div>
-      <p class="gap">
-        <strong>The gap:</strong> the PyQt6 desktop app couldn't run on a Chromebook at all.
-      </p>
+      <div class="repo">Lead Engineer &amp; Product Owner · MITRE · NLP &amp; Regulatory Extraction</div>
       <p>
-        Root-caused it down to the hardware: <code>pyserial</code> saw no device because Crostini's
-        kernel ships no <code>cdc-acm</code> module, and <code>pyusb</code> could open the device but
-        never read from it — the ESP32-H2's USB Serial/JTAG gates TX until the host sends
-        <code>SET_CONTROL_LINE_STATE</code>, which times out through ChromeOS USB passthrough.
-      </p>
-      <p>
-        Rebuilt the client on the Web Serial API with the <code>DTR=0 RTS=1</code> handshake the
-        chip requires — <code>DTR=1</code> silently resets it, which was the real cause of a dead
-        stream. Shipped with live AQI cards, three scrolling charts written directly to canvas
-        with no charting library, CSV streaming, and device config round-trips.
+        Led cross-functional development of an ML obligation extraction system for agency policy documents. Built annotation guidelines, managed supervised ML pipelines, containerized for scale, and conducted direct user feedback loops—pivoting the product to a document survey platform to match operational needs.
       </p>
       <div class="tags">
-        <span>Web Serial API</span><span>ESP32-H2</span><span>USB/CDC</span>
-        <span>Canvas</span><span>ChromeOS/Crostini</span>
+        <span>Regulatory NLP</span><span>Supervised ML</span><span>Product Ownership</span><span>User Discovery</span><span>Docker</span>
       </div>
     </article>
 
     <article class="card">
       <div class="card-head">
-        <h3><a href="https://github.com/CelestoAI/SmolVM/pull/293"><code>smolvm resume</code> for stopped sandboxes</a></h3>
-        <span class="badge merged">Merged</span>
-      </div>
-      <div class="repo">CelestoAI/SmolVM · +103 lines · closes #292</div>
-      <p class="gap">
-        <strong>The gap:</strong> <code>resume</code> worked on paused sandboxes but not stopped ones.
-      </p>
-      <p>
-        Routed both states through the existing <code>vm.start()</code> facade rather than adding a
-        parallel path, and restored <code>--boot-timeout</code> so stopped sandboxes keep the boot-wait
-        control the old <code>start</code> command had. Full CLI suite green at 147 passing.
-      </p>
-      <div class="tags"><span>Python</span><span>CLI design</span><span>pytest</span><span>microVMs</span></div>
-    </article>
-
-    <article class="card">
-      <div class="card-head">
-        <h3><a href="https://github.com/CelestoAI/smolfs/pull/15">Read-only mounts for smolfs</a></h3>
-        <span class="badge open">Open PR</span>
-      </div>
-      <div class="repo">CelestoAI/smolfs · +366 / −12 · 12 files · closes #14</div>
-      <p class="gap">
-        <strong>The gap:</strong> nothing stopped an agent from writing to volumes holding model
-        weights or evaluation data.
-      </p>
-      <p>
-        Added <code>smolfs mount --readonly</code>, enforced by the kernel through FUSE rather than
-        by application-level checks. Read-only is modeled as a property of the <em>mount</em>, not the
-        volume — set at mount, cleared at unmount — so it composes with the existing lifecycle.
-        Threaded through the Rust core, the CLI status table, and both the Python and Node SDKs.
-      </p>
-      <p>
-        Backward compatible via <code>#[serde(default)]</code> so existing volume records still
-        deserialize, with a regression test pinning it. Verified under <code>cargo test</code>,
-        <code>clippy -D warnings</code>, <code>fmt --check</code>, and a <code>maturin</code> wheel build.
-      </p>
-      <div class="tags">
-        <span>Rust</span><span>FUSE/JuiceFS</span><span>PyO3</span><span>Node bindings</span><span>systems</span>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section id="systems">
-  <div class="wrap">
-    <h2>Systems I Built</h2>
-    <p class="section-lead">
-      An agent, the harness I had to build to test it, and the deployment around both.
-    </p>
-
-    <article class="card">
-      <div class="card-head">
-        <h3><a href="https://github.com/craigpfeifer/chefagent">ChefAgent</a></h3>
+        <h3>Policy Consistency Checker</h3>
         <span class="badge live">Deployed</span>
       </div>
-      <div class="repo">craigpfeifer/chefagent · Python · Docker · GCP</div>
+      <div class="repo">MITRE · Unsupervised ML &amp; Semantic Indexing</div>
       <p>
-        A meal-planning agent that started as a single prompt on Celesto's managed agents and grew
-        into a real system: web search grounding through Brave and Exa so recipes track actual
-        seasonal ingredients, an MCP server exposing Brave Search to external clients, and
-        guardrails keeping it in scope.
-      </p>
-      <p>
-        Containerized for one-command deploy to GCP, with behavior driven by versioned prompt files
-        rather than hardcoded strings — so the persona is editable without touching code.
+        Architected semantic indexing pipelines using custom word embeddings and unsupervised clustering to surface policy contradictions across large agency bodies—identifying critical compliance flaws in e-signature governance, info security, and approval chains.
       </p>
       <div class="tags">
-        <span>Agentor</span><span>MCP</span><span>Exa</span><span>Brave Search</span>
-        <span>LiteLLM</span><span>Docker</span><span>GCP</span>
+        <span>Semantic Search</span><span>Embeddings</span><span>Unsupervised Clustering</span><span>Enterprise Policy</span>
       </div>
     </article>
 
     <article class="card">
       <div class="card-head">
-        <h3>Chat UI</h3>
-        <span class="badge private">Private repo</span>
+        <h3><a href="https://lightning.ai/craig-qyive">Lightning Studios &amp; PyTorch Serving Platforms</a></h3>
+        <span class="badge live">Live Infrastructure</span>
       </div>
-      <div class="repo">Python · Chainlit · Docker</div>
-      <p class="gap">
-        <strong>The gap:</strong> no open-source chat UI supported the new OpenAI API spec that
-        Celesto implements — so I couldn't properly test my own agent.
-      </p>
+      <div class="repo">Lightning.ai · PyTorch Platform &amp; API Infrastructure</div>
       <p>
-        Built one. Multiple agent profiles with independent settings, cloud-backed session history
-        via Acontext, model-aware token-limit monitoring across GPT, Claude, and Gemini, and
-        automatic context pruning when conversations outgrow the window. Dockerized with a
-        <code>/health</code> endpoint that checks its own dependencies.
+        Engineered runnable PyTorch Studios and model serving API pipelines. Built reproducible environments and deployment templates enabling one-click execution of complex deep learning workloads.
       </p>
       <div class="tags">
-        <span>Chainlit</span><span>OpenAI API spec</span><span>Acontext</span>
-        <span>context management</span><span>Docker</span>
+        <span>PyTorch</span><span>Model Serving</span><span>MLOps</span><span>Infrastructure</span>
       </div>
-    </article>
-
-    <article class="card">
-      <div class="card-head">
-        <h3><a href="https://lightning.ai/craig-qyive">Lightning Studios &amp; APIs</a></h3>
-        <span class="badge live">Live</span>
-      </div>
-      <div class="repo">lightning.ai/craig-qyive</div>
-      <p>
-        Runnable studios and deployed APIs — not screenshots or demo videos. Open one and it runs.
-      </p>
-      <div class="tags"><span>Lightning AI</span><span>PyTorch</span><span>model serving</span></div>
     </article>
   </div>
 </section>
 
-<section id="writing">
+<section id="agent-runtimes">
   <div class="wrap">
-    <h2>Writing</h2>
-    <p class="section-lead">Thinking out loud about how these systems should be put together.</p>
+    <h2>Agent Runtimes, Sandboxing & Tool Orchestration</h2>
+    <p class="section-lead">
+      Systems engineering for autonomous agents: microVM sandboxes, FUSE read-only security boundaries, and multi-agent tracing.
+    </p>
 
     <article class="card">
       <div class="card-head">
-        <h3><a href="https://celesto.ai/blog/posts/community/orchestrating-dinner/orchestrating-dinner/">Orchestrating Dinner</a></h3>
+        <h3><a href="https://github.com/CelestoAI/smolfs/pull/15">Kernel-Level Read-Only Mounts for Agent Sandboxes</a></h3>
+        <span class="badge open">Open PR</span>
       </div>
-      <div class="repo">celesto.ai · community blog</div>
-      <blockquote>“The Chef Agent to have agency. It's time to add a layer.”</blockquote>
+      <div class="repo">CelestoAI/smolfs · Rust · FUSE · PyO3 · Node SDK</div>
       <p>
-        How a chef chatbot turned into a multi-agent system. Adding tools made it capable but opaque —
-        <em>“adding a tool to the mix increases complexity. How did I know what it was doing?”</em> —
-        so execution traces came first, then an orchestration layer to hold the memory the agent
-        couldn't. The argument: keep the specialist focused on its own domain and let the
-        orchestrator own persistence.
+        Enforced kernel-level read-only security boundaries via FUSE mounts to prevent untrusted agents from mutating evaluation datasets or model weights. Threaded read-only state through Rust core, CLI status tables, and Python/Node SDKs with backward-compatible Serde serialization and full test suites.
       </p>
-      <div class="tags"><span>multi-agent</span><span>MCP</span><span>observability</span><span>OpenClaw</span></div>
+      <div class="tags">
+        <span>Rust</span><span>FUSE</span><span>PyO3</span><span>Agent Sandboxing</span><span>Security Boundaries</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <h3><a href="https://github.com/CelestoAI/SmolVM/pull/293">MicroVM Lifecycle Management in SmolVM</a></h3>
+        <span class="badge merged">Merged</span>
+      </div>
+      <div class="repo">CelestoAI/SmolVM · Python · MicroVM Sandbox</div>
+      <p>
+        Refactored execution lifecycles in microVM sandboxing by routing stopped states through facade pattern starters, preserving boot-wait controls and restoring reliability across 147 test suite specs.
+      </p>
+      <div class="tags"><span>Python</span><span>MicroVMs</span><span>CLI Architecture</span><span>Sandboxing</span></div>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <h3><a href="https://github.com/craigpfeifer/chefagent">Multi-Agent Tool Orchestration & Grounding</a></h3>
+        <span class="badge live">Deployed</span>
+      </div>
+      <div class="repo">craigpfeifer/chefagent · Python · MCP · LiteLLM · GCP</div>
+      <p>
+        Engineered multi-agent tool execution pipeline using Model Context Protocol (MCP), Brave/Exa search grounding, LiteLLM routing, and execution tracing. Containerized for one-command GCP deployment with decoupled, versioned prompt definitions.
+      </p>
+      <div class="tags">
+        <span>Multi-Agent</span><span>MCP</span><span>Observability</span><span>Docker</span><span>GCP</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <h3>OpenAI API Spec Testing Harness & Chat UI</h3>
+        <span class="badge private">Private Repo</span>
+      </div>
+      <div class="repo">Python · Chainlit · Acontext · Docker</div>
+      <p>
+        Built multi-agent evaluation UI with model-aware token window monitoring, automated context window pruning across GPT/Claude/Gemini, and persistent session state via Acontext.
+      </p>
+      <div class="tags">
+        <span>Chainlit</span><span>Token Pruning</span><span>Context Management</span><span>Docker</span>
+      </div>
     </article>
   </div>
 </section>
@@ -506,9 +458,7 @@
   <div class="wrap">
     <h2>Research Track Record</h2>
     <p class="section-lead">
-      Applied AI in legal and regulatory domains, back when that meant custom embeddings and
-      semi-supervised methods. Same instinct as the work above — research aimed at something
-      that has to actually run.
+      Academic contributions in legal NLP, explainable prediction, and semantic edge labeling.
     </p>
 
     <div class="metrics">
@@ -542,21 +492,42 @@
       Does lawyering matter? Predicting judicial decisions from legal briefs
       <div class="venue">Texas Law Review · 2021 · 38 citations</div>
     </div>
+  </div>
+</section>
 
-    <div class="prior">
-      <h3>ADEPT — Automated Directive Extraction from Policy Texts</h3>
+<section id="upstream">
+  <div class="wrap">
+    <h2>Upstream & Edge Engineering</h2>
+    <p class="section-lead">
+      Direct hardware and Web API troubleshooting across serial drivers and embedded controllers.
+    </p>
+
+    <article class="card">
+      <div class="card-head">
+        <h3><a href="https://github.com/StuckAtPrototype/AirCube/pull/58">ChromeOS Web Serial AirCube Monitor</a></h3>
+        <span class="badge open">Open PR</span>
+      </div>
+      <div class="repo">StuckAtPrototype/AirCube · Web Serial API · ESP32-H2 · Canvas</div>
       <p>
-        Lead engineer and product owner. Built ML extraction of regulatory obligations from policy
-        documents, led the cross-functional team, wrote the annotation guidelines, and containerized
-        the system for scale. Pivoted to a document survey system when user feedback said the
-        original framing wasn't what people needed.
+        Diagnosed Crostini USB kernel constraints and ESP32-H2 control line timing limits. Re-engineered client around Web Serial API with custom canvas charting and DTR/RTS hardware handshaking.
       </p>
+      <div class="tags">
+        <span>Web Serial API</span><span>ESP32-H2</span><span>ChromeOS</span><span>Embedded Hardware</span>
+      </div>
+    </article>
+  </div>
+</section>
 
-      <h3>Policy Consistency Checker</h3>
+<section id="advisory">
+  <div class="wrap">
+    <div class="cta-card">
+      <h3>R&D Productization & Technical Customer Discovery</h3>
       <p>
-        Semantic indexing with custom-trained word embeddings and unsupervised clustering to surface
-        contradictory policies across a large agency — turning up real inconsistencies in
-        e-signature governance, information security, and approval chains.
+        Advising deep-tech startups, R&D teams, and infrastructure founders on bridging paper math to shipped enterprise software. From sandboxed agent security to MLOps architecture.
+      </p>
+      <p class="contact-line">
+        Looking to validate and productize your AI/ML technology?
+        <a href="mailto:craig.pfeifer@gmail.com">Get in touch</a>.
       </p>
     </div>
   </div>
@@ -564,10 +535,6 @@
 
 <footer>
   <div class="wrap">
-    <p class="contact-line">
-      Building something that needs applied AI to actually ship?
-      <a href="mailto:craig.pfeifer@gmail.com">Get in touch</a>.
-    </p>
     <nav class="links">
       <a href="https://github.com/craigpfeifer">GitHub</a>
       <a href="https://www.linkedin.com/in/craigpfeifer/">LinkedIn</a>
